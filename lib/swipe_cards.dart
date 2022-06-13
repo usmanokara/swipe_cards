@@ -171,14 +171,17 @@ class _SwipeCardsState extends State<SwipeCards> {
             isBackCard: true,
           ),
         if (widget.matchEngine.currentItem != null)
-          DraggableCard(
-            card: _buildFrontCard(),
-            slideTo: _desiredSlideOutDirection(),
-            onSlideUpdate: _onSlideUpdate,
-            onSlideRegionUpdate: _onSlideRegion,
-            onSlideOutComplete: _onSlideOutComplete,
-            upSwipeAllowed: widget.upSwipeAllowed,
-            isBackCard: false,
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: DraggableCard(
+              card: _buildFrontCard(),
+              slideTo: _desiredSlideOutDirection(),
+              onSlideUpdate: _onSlideUpdate,
+              onSlideRegionUpdate: _onSlideRegion,
+              onSlideOutComplete: _onSlideOutComplete,
+              upSwipeAllowed: widget.upSwipeAllowed,
+              isBackCard: false,
+            ),
           )
       ],
     );
