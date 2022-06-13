@@ -172,7 +172,7 @@ class _SwipeCardsState extends State<SwipeCards> {
           ),
         if (widget.matchEngine.currentItem != null)
           Padding(
-            padding: const EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 100),
             child: DraggableCard(
               card: _buildFrontCard(),
               slideTo: _desiredSlideOutDirection(),
