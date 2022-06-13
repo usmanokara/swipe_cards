@@ -30,7 +30,7 @@ class SwipeCards extends StatefulWidget {
 class _SwipeCardsState extends State<SwipeCards> {
   Key? _frontCard;
   SwipeItem? _currentItem;
-  double _nextCardScale = 0.98;
+  double _nextCardScale = 1;
   SlideRegion? slideRegion;
 
   @override
@@ -172,7 +172,7 @@ class _SwipeCardsState extends State<SwipeCards> {
           ),
         if (widget.matchEngine.currentItem != null)
           Padding(
-            padding: const EdgeInsets.only(top: 30),
+            padding: const EdgeInsets.only(top: 35),
             child: DraggableCard(
               card: _buildFrontCard(),
               slideTo: _desiredSlideOutDirection(),
