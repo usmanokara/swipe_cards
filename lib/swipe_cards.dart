@@ -12,16 +12,20 @@ class SwipeCards extends StatefulWidget {
   Function(SwipeItem, int)? itemChanged;
   final bool fillSpace;
   final bool upSwipeAllowed;
+  final double nextCardScale;
+  final double topMargin;
 
-  SwipeCards({
-    Key? key,
-    required this.matchEngine,
-    required this.onStackFinished,
-    required this.itemBuilder,
-    this.fillSpace = true,
-    this.upSwipeAllowed = false,
-    this.itemChanged,
-  }) : super(key: key);
+  SwipeCards(
+      {Key? key,
+      required this.matchEngine,
+      required this.onStackFinished,
+      required this.itemBuilder,
+      this.fillSpace = true,
+      this.upSwipeAllowed = false,
+      this.itemChanged,
+      this.nextCardScale = 0.85,
+      this.topMargin = 0})
+      : super(key: key);
 
   @override
   _SwipeCardsState createState() => _SwipeCardsState();
@@ -35,6 +39,7 @@ class _SwipeCardsState extends State<SwipeCards> {
 
   @override
   void initState() {
+    _nextCardScale = widget.nextCardScale;
     widget.matchEngine.addListener(_onMatchEngineChange);
     _currentItem = widget.matchEngine.currentItem;
     _currentItem!.addListener(_onMatchChange);
@@ -172,7 +177,7 @@ class _SwipeCardsState extends State<SwipeCards> {
           ),
         if (widget.matchEngine.currentItem != null)
           Padding(
-            padding: const EdgeInsets.only(top: 45),
+            padding: EdgeInsets.only(top: widget.topMargin),
             child: DraggableCard(
               card: _buildFrontCard(),
               slideTo: _desiredSlideOutDirection(),
